@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marco Verratti - PSG</title>
+    <style>
+        /* Variables CSS - Mismas que en index.html para consistencia */
+        :root {
+            --primary-color: #004170; /* Azul PSG */
+            --secondary-color: #DA291C; /* Rojo PSG */
+            --accent-color: #FFFFFF; /* Blanco */
+            --light-color: #f5f5f5;
+            --dark-color: #001C38;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header y navegación - Igual que en index.html */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            color: var(--secondary-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 1.5rem;
+        }
+
+        nav a {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .active {
+            background-color: var(--secondary-color);
+        }
+
+        /* Contenedor principal de detalle */
+        .detail-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .detail-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .detail-player-img {
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 4px solid var(--secondary-color);
+            overflow: hidden;
+        }
+
+        .detail-player-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .detail-player-info h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-player-info .position {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .player-number {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .detail-content {
+            padding: 2rem;
+        }
+
+        .detail-section {
+            margin-bottom: 2rem;
+        }
+
+        .detail-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .stat-card .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .bio-text {
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .trophies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .trophy-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .trophy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .trophy-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            color: var(--secondary-color);
+            transition: var(--transition);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--secondary-color);
+            border-radius: 4px;
+        }
+
+        .back-link:hover {
+            color: white;
+            background-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .psg-badge {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        /* Estilos específicos para Verratti */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: var(--secondary-color);
+        }
+        
+        .midfield-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .midfield-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 3px solid var(--primary-color);
+        }
+        
+        .midfield-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .passing-meter {
+            width: 100%;
+            height: 20px;
+            background: #eee;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .passing-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #FFC107);
+            width: 94%;
+            border-radius: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .detail-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .detail-player-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .detail-content {
+                padding: 1.5rem;
+            }
+            
+            .stats-grid, .trophies-grid, .skills-grid, .midfield-stats {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid, .trophies-grid, .skills-grid, .midfield-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y navegación -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span class="logo-icon">PSG</span> Galería de Jugadores
+                </div>
+                <ul>
+                    <li><a href="../index.html">PRINCIPAL</a></li>
+                    <li><a href="../com-ho-hem-fet.html">¿CÓMO SE HA HECHO?</a></li>
+                    <li><a href="../referencias.html">REFERENCIAS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal de detalle -->
+    <main class="container">
+        <div class="detail-container">
+            <div class="detail-header">
+                <div class="detail-player-img">
+                    <img src="../img/jugadores/marco.jpg" alt="Marco Verratti">
+                </div>
+                <div class="detail-player-info">
+                    <h1>Marco Verratti</h1>
+                    <div class="position">
+                        <span class="player-number">6</span> Centrocampista - Mediocentro
+                    </div>
+                    <p>El cerebro del PSG, conocido por su excepcional visión de juego, precisión en el pase y capacidad para controlar el tempo del partido desde el centro del campo.</p>
+                </div>
+            </div>
+            
+            <div class="detail-content">
+                <!-- Estadísticas -->
+                <section class="detail-section">
+                    <h2>Estadísticas 2022-2023</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="value">0</div>
+                            <div class="label">Goles</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="value">8</div>
+                            <div class="label">Asistencias</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="value">32</div>
+                            <div class="label">Partidos jugados</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="value">2.580'</div>
+                            <div class="label">Minutos jugados</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="value">93%</div>
+                            <div class="label">Precisión de pase</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="value">2.847</div>
+                            <div class="label">Pases completados</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Estadísticas de mediocampo -->
+                <section class="detail-section">
+                    <h2>Estadísticas de Mediocampo</h2>
+                    <div class="midfield-stats">
+                        <div class="midfield-card">
+                            <div class="midfield-icon">🎯</div>
+                            <div class="value">89%</div>
+                            <div class="label">Pases largos</div>
+                        </div>
+                        <div class="midfield-card">
+                            <div class="midfield-icon">🔄</div>
+                            <div class="value">127</div>
+                            <div class="label">Recuperaciones</div>
+                        </div>
+                        <div class="midfield-card">
+                            <div class="midfield-icon">⚡</div>
+                            <div class="value">68</div>
+                            <div class="label">Regates exitosos</div>
+                        </div>
+                        <div class="midfield-card">
+                            <div class="midfield-icon">🎭</div>
+                            <div class="value">42</div>
+                            <div class="label">Faltas recibidas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="passing-meter">
+                        <div class="passing-fill"></div>
+                    </div>
+                    <p style="text-align: center; font-size: 0.9rem; color: #666;">Precisión de pase excepcional - uno de los mejores pasadores del mundo</p>
+                </section>
+                
+                <!-- Habilidades -->
+                <section class="detail-section">
+                    <h2>Habilidades Destacadas</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Visión de juego</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Control de balón</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Pase largo</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Regate en espacios reducidos</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Biografía -->
+                <section class="detail-section">
+                    <h2>Biografía</h2>
+                    <div class="bio-text">
+                        <p>Marco Verratti, nacido el 5 de noviembre de 1992 en Pescara, Italia, es un centrocampista que juega en el Paris Saint-Germain y en la selección italiana.</p>
+                        
+                        <p>Considerado uno de los mejores mediocentros de su generación, Verratti comenzó su carrera en el Pescara Calcio, donde destacó inmediatamente por su calidad técnica y visión de juego. Su gran rendimiento en la Serie B italiana llamó la atención del Paris Saint-Germain, que lo fichó en 2012 por 12 millones de euros.</p>
+                        
+                        <p>En el PSG, se ha convertido en un jugador fundamental y en el cerebro del equipo. Es conocido por su capacidad para controlar el tempo del partido, su precisión en el pase y su habilidad para evadir la presión rival en espacios reducidos. Con la selección italiana, fue figura clave en la victoria de la Eurocopa 2020, demostrando su calidad en el escenario internacional.</p>
+                    </div>
+                </section>
+                
+                <!-- Información personal -->
+                <section class="detail-section">
+                    <h2>Información Personal</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="value">30</div>
+                            <div class="label">Edad</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="value">Italia</div>
+                            <div class="label">Nacionalidad</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="value">1,65 m</div>
+                            <div class="label">Altura</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="value">Derecho</div>
+                            <div class="label">Pierna hábil</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Trayectoria -->
+                <section class="detail-section">
+                    <h2>Trayectoria</h2>
+                    <div class="bio-text">
+                        <p><strong>2008-2012:</strong> Pescara Calcio - 74 partidos, 2 goles</p>
+                        <p><strong>2012-Actualidad:</strong> Paris Saint-Germain - 416 partidos, 11 goles</p>
+                        <p><strong>Selección Italiana:</strong> 55 partidos, 3 goles</p>
+                    </div>
+                </section>
+                
+                <!-- Palmarés -->
+                <section class="detail-section">
+                    <h2>Palmarés Destacado</h2>
+                    <div class="trophies-grid">
+                        <div class="trophy-card">
+                            <div class="trophy-icon">🏆</div>
+                            <div class="label">Eurocopa 2020</div>
+                        </div>
+                        <div class="trophy-card">
+                            <div class="trophy-icon">🏆</div>
+                            <div class="label">Ligue 1 (9)</div>
+                        </div>
+                        <div class="trophy-card">
+                            <div class="trophy-icon">🏆</div>
+                            <div class="label">Copa de Francia (6)</div>
+                        </div>
+                        <div class="trophy-card">
+                            <div class="trophy-icon">🏆</div>
+                            <div class="label">Copa de la Liga (6)</div>
+                        </div>
+                        <div class="trophy-card">
+                            <div class="trophy-icon">🏆</div>
+                            <div class="label">Supercopa de Francia (9)</div>
+                        </div>
+                        <div class="trophy-card">
+                            <div class="trophy-icon">🏆</div>
+                            <div class="label">Serie B 2011-12</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Récords y logros -->
+                <section class="detail-section">
+                    <h2>Récords y Logros</h2>
+                    <div class="bio-text">
+                        <ul>
+                            <li>Jugador con más títulos en la historia del PSG (junto a Marquinhos)</li>
+                            <li>Mejor Jugador Joven de la Serie B 2011-2012</li>
+                            <li>Incluido en el Equipo del Año de la Ligue 1 en múltiples ocasiones</li>
+                            <li>Considerado el heredero de Andrea Pirlo en la selección italiana</li>
+                            <li>Jugador con más recuperaciones en la Ligue 1 en varias temporadas</li>
+                            <li>Medalla de Oro al Mérito de la República Italiana por la victoria en la Eurocopa</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Estilo de juego -->
+                <section class="detail-section">
+                    <h2>Estilo de Juego</h2>
+                    <div class="bio-text">
+                        <p>Marco Verratti es conocido por su estilo de juego único, caracterizado por:</p>
+                        <ul>
+                            <li><strong>Visión excepcional:</strong> Capacidad para ver pases que otros jugadores no perciben</li>
+                            <li><strong>Control del tempo:</strong> Domina el ritmo del partido acelerando o ralentizando el juego según convenga</li>
+                            <li><strong>Resistencia a la presión:</strong> Habilidad única para mantener la posesión bajo presión extrema</li>
+                            <li><strong>Pases entre líneas:</strong> Especialista en romper líneas defensivas con pases precisos</li>
+                            <li><strong>Regate en espacios reducidos:</strong> Utiliza su baja estatura como ventaja para evadir marcajes</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Enlace para volver -->
+                <a href="../index.html" class="back-link">
+                    ← Volver a la Galería
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="psg-badge">PSG</div>
+                <p>Galería de Jugadores del Paris Saint-Germain &copy; 2023</p>
+                <p>Proyecto para aprender desarrollo web</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para destacar la página activa en la navegación
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // Proyecto para aprender desarrollo web
+        });
+    </script>
+</body>
+</html>
