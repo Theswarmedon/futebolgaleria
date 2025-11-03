@@ -4,10 +4,237 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿CÓMO SE HA HECHO? - Galería PSG</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #004170;
+            --secondary-color: #DA291C;
+            --accent-color: #FFFFFF;
+            --light-color: #f5f5f5;
+            --dark-color: #001C38;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover, .active {
+            background-color: var(--secondary-color);
+        }
+
+        /* Contenido principal */
+        main {
+            padding: 2rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .content-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .bio-text {
+            line-height: 1.8;
+        }
+
+        .bio-text p, .bio-text ul, .bio-text ol {
+            margin-bottom: 1rem;
+        }
+
+        .bio-text ul, .bio-text ol {
+            padding-left: 1.5rem;
+        }
+
+        .bio-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        .bio-text strong {
+            color: var(--primary-color);
+        }
+
+        /* Grid de tecnologías */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-card {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .tech-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-card ul {
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .psg-badge {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-section {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header y navegación -->
     <header>
         <div class="container">
             <nav>
@@ -23,21 +250,18 @@
         </div>
     </header>
 
-    <!-- Contenido principal -->
     <main class="container">
         <section class="content-page">
             <h1 class="section-title">¿CÓMO SE HA HECHO?</h1>
             
-            <!-- Introducción -->
             <section class="content-section">
                 <h2>Qué es este proyecto</h2>
                 <div class="bio-text">
-                    <p>Esta es una galería de jugadores del PSG que hice para aprender desarrollo web. Es un proyecto educativo donde puse en práctica lo que sé de HTML, CSS y JavaScript.</p>
+                    <p>Esta es una galería de jugadores del PSG que hice para aprender desarrollo web. Es un proyecto educativo donde puse en práctica lo que sé de HTML y CSS.</p>
                     <p>La idea era crear algo parecido a las cards de FIFA pero en una página web, mostrando información detallada de cada jugador.</p>
                 </div>
             </section>
 
-            <!-- Tecnologías usadas -->
             <section class="content-section">
                 <h2>Qué herramientas usé</h2>
                 <p>Para hacer esta galería utilicé estas tecnologías web:</p>
@@ -62,19 +286,9 @@
                             <li>Transiciones y efectos</li>
                         </ul>
                     </div>
-                    
-                    <div class="tech-card">
-                        <div class="tech-title">JavaScript</div>
-                        <p>Para las funciones interactivas</p>
-                        <ul>
-                            <li>Navegación activa</li>
-                            <li>Funcionalidades básicas</li>
-                        </ul>
-                    </div>
                 </div>
             </section>
 
-            <!-- Proceso de trabajo -->
             <section class="content-section">
                 <h2>Cómo lo hice paso a paso</h2>
                 <div class="bio-text">
@@ -90,7 +304,6 @@
                 </div>
             </section>
 
-            <!-- Estructura del proyecto -->
             <section class="content-section">
                 <h2>Cómo está organizado el código</h2>
                 <div class="bio-text">
@@ -99,14 +312,12 @@
                         <li><strong>index.html</strong> - La página principal con la galería</li>
                         <li><strong>com-ho-hem-fet.html</strong> - Esta página que explica el proceso</li>
                         <li><strong>referencias.html</strong> - Donde pongo todas las fuentes</li>
-                        <li><strong>styles.css</strong> - Todos los estilos en un solo archivo</li>
                         <li><strong>detalles/</strong> - Carpeta con páginas individuales de cada jugador</li>
                         <li><strong>img/</strong> - Carpeta para las imágenes de los jugadores</li>
                     </ul>
                 </div>
             </section>
 
-            <!-- Diseño y estilos -->
             <section class="content-section">
                 <h2>Cómo hice el diseño</h2>
                 <div class="bio-text">
@@ -128,7 +339,6 @@
                 </div>
             </section>
 
-            <!-- Funcionalidades -->
             <section class="content-section">
                 <h2>Qué cosas hace la página</h2>
                 <div class="bio-text">
@@ -143,7 +353,6 @@
                 </div>
             </section>
 
-            <!-- Desafíos y soluciones -->
             <section class="content-section">
                 <h2>Problemas que tuve y cómo los resolví</h2>
                 <div class="bio-text">
@@ -157,7 +366,6 @@
                 </div>
             </section>
 
-            <!-- Aprendizajes -->
             <section class="content-section">
                 <h2>Qué aprendí haciendo esto</h2>
                 <div class="bio-text">
@@ -172,15 +380,12 @@
                 </div>
             </section>
 
-            <!-- Posibles mejoras -->
             <section class="content-section">
                 <h2>Qué podría mejorar en el futuro</h2>
                 <div class="bio-text">
                     <p>Si tuviera más tiempo, me gustaría añadir:</p>
                     <ul>
-                        <li>Más interactividad con JavaScript</li>
                         <li>Un sistema de filtros para buscar jugadores</li>
-                        <li>Estadísticas en tiempo real</li>
                         <li>Más efectos visuales y animaciones</li>
                         <li>Una versión en otros idiomas</li>
                     </ul>
@@ -189,7 +394,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -199,21 +403,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Script para destacar la página activa en la navegación
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('nav a');
-            
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>

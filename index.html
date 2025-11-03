@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería de Jugadores - PSG</title>
     <style>
-        /* Variables CSS */
+        /* Variables y reset */
         :root {
-            --primary-color: #004170; /* Azul PSG */
-            --secondary-color: #DA291C; /* Rojo PSG */
-            --accent-color: #FFFFFF; /* Blanco */
+            --primary-color: #004170;
+            --secondary-color: #DA291C;
+            --accent-color: #FFFFFF;
             --light-color: #f5f5f5;
             --dark-color: #001C38;
             --text-color: #333;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
         }
 
-        /* Reset y estilos base */
         * {
             margin: 0;
             padding: 0;
@@ -50,7 +48,7 @@
             padding: 0 15px;
         }
 
-        /* Header y navegación */
+        /* Header */
         header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
             color: white;
@@ -92,19 +90,15 @@
         nav a {
             padding: 0.5rem 1rem;
             border-radius: 4px;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             font-weight: 500;
         }
 
-        nav a:hover {
+        nav a:hover, .active {
             background-color: var(--secondary-color);
         }
 
-        .active {
-            background-color: var(--secondary-color);
-        }
-
-        /* Hero section */
+        /* Hero */
         .hero {
             background: linear-gradient(rgba(0, 65, 112, 0.8), rgba(218, 41, 28, 0.8)), 
                         url('https://source.unsplash.com/random/1600x900/?stadium,paris') center/cover no-repeat;
@@ -126,7 +120,7 @@
             margin: 0 auto;
         }
 
-        /* Jugadores Destacados */
+        /* Jugadores destacados */
         .jugadores-destacados {
             display: flex;
             justify-content: center;
@@ -209,7 +203,7 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: var(--transition);
+            transition: all 0.3s ease;
             border-top: 4px solid var(--secondary-color);
         }
 
@@ -286,7 +280,7 @@
             color: white;
             padding: 0.6rem 1.2rem;
             border-radius: 4px;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             font-size: 0.9rem;
@@ -589,141 +583,6 @@
                         <a href="detalles/navas.html" class="btn">Ver Perfil Completo</a>
                     </div>
                 </div>
-                
-                <!-- Jugador 7 - Sergio Ramos -->
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="img/jugadores/Sergio_Ramos.jpg" alt="Sergio Ramos">
-                    </div>
-                    <div class="player-content">
-                        <h3 class="player-name">Sergio Ramos</h3>
-                        <span class="player-position">Defensa</span>
-                        <div class="player-stats">
-                            <div class="stat">
-                                <div class="stat-value">3</div>
-                                <div class="stat-label">Goles</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">2</div>
-                                <div class="stat-label">Asistencias</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">35</div>
-                                <div class="stat-label">Partidos</div>
-                            </div>
-                        </div>
-                        <p class="player-desc">Defensa central español, conocido por su liderazgo, experiencia y capacidad goleadora.</p>
-                        <a href="detalles/ramos.html" class="btn">Ver Perfil Completo</a>
-                    </div>
-                </div>
-                
-                <!-- Jugador 8 - Achraf Hakimi -->
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="img/jugadores/HakimiAchraf.jpg" alt="Achraf Hakimi">
-                    </div>
-                    <div class="player-content">
-                        <h3 class="player-name">Achraf Hakimi</h3>
-                        <span class="player-position">Defensa</span>
-                        <div class="player-stats">
-                            <div class="stat">
-                                <div class="stat-value">5</div>
-                                <div class="stat-label">Goles</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">7</div>
-                                <div class="stat-label">Asistencias</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">38</div>
-                                <div class="stat-label">Partidos</div>
-                            </div>
-                        </div>
-                        <p class="player-desc">Lateral derecho marroquí, destacado por su velocidad y capacidad ofensiva.</p>
-                        <a href="detalles/hakimi.html" class="btn">Ver Perfil Completo</a>
-                    </div>
-                </div>
-                
-                <!-- Jugador 9 - Presnel Kimpembe -->
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="img/jugadores/Presnel_Kimpembe.jpg" alt="Presnel Kimpembe">
-                    </div>
-                    <div class="player-content">
-                        <h3 class="player-name">Presnel Kimpembe</h3>
-                        <span class="player-position">Defensa</span>
-                        <div class="player-stats">
-                            <div class="stat">
-                                <div class="stat-value">1</div>
-                                <div class="stat-label">Goles</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">1</div>
-                                <div class="stat-label">Asistencias</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">25</div>
-                                <div class="stat-label">Partidos</div>
-                            </div>
-                        </div>
-                        <p class="player-desc">Defensa central francés, formado en la cantera del PSG y campeón del mundo en 2018.</p>
-                        <a href="detalles/kimpembe.html" class="btn">Ver Perfil Completo</a>
-                    </div>
-                </div>
-                
-                <!-- Jugador 10 - Leandro Paredes -->
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="img/jugadores/Leandro_Paredes_.jpg" alt="Leandro Paredes">
-                    </div>
-                    <div class="player-content">
-                        <h3 class="player-name">Leandro Paredes</h3>
-                        <span class="player-position">Centrocampista</span>
-                        <div class="player-stats">
-                            <div class="stat">
-                                <div class="stat-value">1</div>
-                                <div class="stat-label">Goles</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">5</div>
-                                <div class="stat-label">Asistencias</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">27</div>
-                                <div class="stat-label">Partidos</div>
-                            </div>
-                        </div>
-                        <p class="player-desc">Centrocampista argentino, especialista en pases largos y recuperación de balones.</p>
-                        <a href="detalles/paredes.html" class="btn">Ver Perfil Completo</a>
-                    </div>
-                </div>
-                
-                <!-- Jugador 11 - Ángel Di María -->
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="img/jugadores/Ángel.jpg" alt="Ángel Di María">
-                    </div>
-                    <div class="player-content">
-                        <h3 class="player-name">Ángel Di María</h3>
-                        <span class="player-position">Delantero</span>
-                        <div class="player-stats">
-                            <div class="stat">
-                                <div class="stat-value">8</div>
-                                <div class="stat-label">Goles</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">11</div>
-                                <div class="stat-label">Asistencias</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">30</div>
-                                <div class="stat-label">Partidos</div>
-                            </div>
-                        </div>
-                        <p class="player-desc">Extremo argentino, conocido por su calidad técnica, regate y precisión en el pase.</p>
-                        <a href="detalles/dimaria.html" class="btn">Ver Perfil Completo</a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -738,23 +597,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Script para destacar la página activa en la navegación
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('nav a');
-            
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-            
-            // Proyecto para aprender desarrollo web
-        });
-    </script>
 </body>
 </html>
